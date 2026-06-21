@@ -13,7 +13,7 @@
 
             if (userId == Guid.Empty) throw new ArgumentException("User id is invalid.");
 
-            if (transactionValue <= 0) throw new ArgumentException("Transaction is invalid.");
+            if (transactionValue <= 0) throw new ArgumentException("Transaction value must be greater than zero.");
 
             if (string.IsNullOrWhiteSpace(originCountry)) throw new ArgumentException("Origin country is invalid.");
 

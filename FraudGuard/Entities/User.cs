@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace FraudGuard.Entities { 
+﻿namespace FraudGuard.Entities { 
     internal class User {
 
         public string Name { get; private set; }
@@ -9,7 +7,7 @@ namespace FraudGuard.Entities {
 
         public User(string name, Guid id, string usualCountry) {
 
-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Name is invalid.");
+            if (string.IsNullOrWhiteSpace(name) || name.Trim().Length < 3) throw new ArgumentException("Name is invalid.");
 
             if (id == Guid.Empty) throw new ArgumentException("User id is invalid.") ;
 

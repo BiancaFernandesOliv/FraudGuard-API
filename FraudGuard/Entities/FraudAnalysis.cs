@@ -7,9 +7,9 @@
 
         public FraudAnalysis(bool isSuspicious, string riskLevel, string reason) { 
 
-            if (string.IsNullOrEmpty(riskLevel)) throw new ArgumentException("Risk level is invalid.");
+            if (string.IsNullOrWhiteSpace(riskLevel)) throw new ArgumentException("Risk level is invalid.");
 
-            if (string.IsNullOrEmpty(reason)) throw new ArgumentException("Reason is invalid.");
+            if (string.IsNullOrWhiteSpace(reason) || reason.Trim().Length < 3) throw new ArgumentException("Reason is invalid.");
 
             IsSuspicious = isSuspicious;
             RiskLevel = riskLevel;

@@ -1,0 +1,50 @@
+[1mdiff --git a/FraudGuard/Entities/FraudAnalysis.cs b/FraudGuard/Entities/FraudAnalysis.cs[m
+[1mindex bd99168..96e0643 100644[m
+[1m--- a/FraudGuard/Entities/FraudAnalysis.cs[m
+[1m+++ b/FraudGuard/Entities/FraudAnalysis.cs[m
+[36m@@ -7,9 +7,9 @@[m
+ [m
+         public FraudAnalysis(bool isSuspicious, string riskLevel, string reason) { [m
+ [m
+[31m-            if (string.IsNullOrEmpty(riskLevel)) throw new ArgumentException("Risk level is invalid.");[m
+[32m+[m[32m            if (string.IsNullOrWhiteSpace(riskLevel)) throw new ArgumentException("Risk level is invalid.");[m
+ [m
+[31m-            if (string.IsNullOrEmpty(reason)) throw new ArgumentException("Reason is invalid.");[m
+[32m+[m[32m            if (string.IsNullOrWhiteSpace(reason) || reason.Trim().Length < 3) throw new ArgumentException("Reason is invalid.");[m
+ [m
+             IsSuspicious = isSuspicious;[m
+             RiskLevel = riskLevel;[m
+[1mdiff --git a/FraudGuard/Entities/Transaction.cs b/FraudGuard/Entities/Transaction.cs[m
+[1mindex 67d587d..cef08f0 100644[m
+[1m--- a/FraudGuard/Entities/Transaction.cs[m
+[1m+++ b/FraudGuard/Entities/Transaction.cs[m
+[36m@@ -13,7 +13,7 @@[m
+ [m
+             if (userId == Guid.Empty) throw new ArgumentException("User id is invalid.");[m
+ [m
+[31m-            if (transactionValue <= 0) throw new ArgumentException("Transaction is invalid.");[m
+[32m+[m[32m            if (transactionValue <= 0) throw new ArgumentException("Transaction value must be greater than zero.");[m
+ [m
+             if (string.IsNullOrWhiteSpace(originCountry)) throw new ArgumentException("Origin country is invalid.");[m
+ [m
+[1mdiff --git a/FraudGuard/Entities/User.cs b/FraudGuard/Entities/User.cs[m
+[1mindex a0bc1ef..c6fd336 100644[m
+[1m--- a/FraudGuard/Entities/User.cs[m
+[1m+++ b/FraudGuard/Entities/User.cs[m
+[36m@@ -1,6 +1,4 @@[m
+[31m-﻿using System.ComponentModel;[m
+[31m-[m
+[31m-namespace FraudGuard.Entities { [m
+[32m+[m[32m﻿namespace FraudGuard.Entities {[m[41m [m
+     internal class User {[m
+ [m
+         public string Name { get; private set; }[m
+[36m@@ -9,7 +7,7 @@[m [mnamespace FraudGuard.Entities {[m
+ [m
+         public User(string name, Guid id, string usualCountry) {[m
+ [m
+[31m-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Name is invalid.");[m
+[32m+[m[32m            if (string.IsNullOrWhiteSpace(name) || name.Trim().Length < 3) throw new ArgumentException("Name is invalid.");[m
+ [m
+             if (id == Guid.Empty) throw new ArgumentException("User id is invalid.") ;[m
+ [m
