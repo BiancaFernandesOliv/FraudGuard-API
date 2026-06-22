@@ -21,7 +21,7 @@ A proposta é simular um sistema capaz de identificar transações potencialment
 * [x] Estrutura inicial do projeto
 * [x] Modelagem das entidades
 * [x] Validação de parâmetros
-* [ ] Níveis de risco utilizando Enum
+* [x] Níveis de risco utilizando Enum
 * [ ] Serviço de análise de fraude
 * [ ] API REST com ASP.NET Core
 * [ ] Persistência com Entity Framework
