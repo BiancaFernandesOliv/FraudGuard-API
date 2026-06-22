@@ -1,13 +1,15 @@
-﻿namespace FraudGuard.Entities {
+﻿using FraudGuard.Enums;
+
+namespace FraudGuard.Entities {
     internal class Transaction {
 
         public Guid TransactionId { get; private set; }
         public Guid UserId { get; private set; }
         public decimal TransactionValue { get; private set; }
-        public string OriginCountry { get; private set; }
+        public Country OriginCountry { get; private set; }
         public DateTime TransactionDateTime { get; private set; }
 
-        public Transaction(Guid transactionId, Guid userId, decimal transactionValue, string originCountry, DateTime transactionDateTime) {
+        public Transaction(Guid transactionId, Guid userId, decimal transactionValue, Country originCountry, DateTime transactionDateTime) {
 
             if (transactionId == Guid.Empty) throw new ArgumentException("Transaction id is invalid.");
 
@@ -15,7 +17,7 @@
 
             if (transactionValue <= 0) throw new ArgumentException("Transaction value must be greater than zero.");
 
-            if (string.IsNullOrWhiteSpace(originCountry)) throw new ArgumentException("Origin country is invalid.");
+            if (!Enum.IsDefined(originCountry)) throw new ArgumentException("Origin country is invalid.");
 
             if (transactionDateTime > DateTime.Now) throw new ArgumentException("Transaction date cannot be later than the current date!");
 
