@@ -13,7 +13,7 @@ namespace FraudGuard.Entities {
 
             if (id == Guid.Empty) throw new ArgumentException("User id is invalid.") ;
 
-            if (!Enum.IsDefined(usualCountry)) throw new ArgumentException("Usual country is invalid.");
+            if (!Enum.IsDefined(typeof(Country), usualCountry)) throw new ArgumentException("User country is invalid.");
 
             Name = name;
             Id = id;

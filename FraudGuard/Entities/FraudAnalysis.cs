@@ -9,7 +9,7 @@ namespace FraudGuard.Entities {
 
         public FraudAnalysis(bool isSuspicious, FraudRiskLevel riskLevel, string reason) { 
 
-            if (!Enum.IsDefined(riskLevel)) throw new ArgumentException("Risk level is invalid.");
+            if (!Enum.IsDefined(typeof(FraudRiskLevel), riskLevel)) throw new ArgumentException("Risk level is invalid.");
 
             if (string.IsNullOrWhiteSpace(reason) || reason.Trim().Length < 3) throw new ArgumentException("Reason is invalid.");
 

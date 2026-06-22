@@ -17,7 +17,7 @@ namespace FraudGuard.Entities {
 
             if (transactionValue <= 0) throw new ArgumentException("Transaction value must be greater than zero.");
 
-            if (!Enum.IsDefined(originCountry)) throw new ArgumentException("Origin country is invalid.");
+            if (!Enum.IsDefined(typeof(Country), originCountry)) throw new ArgumentException("Origin country is invalid.");
 
             if (transactionDateTime > DateTime.Now) throw new ArgumentException("Transaction date cannot be later than the current date!");
 
