@@ -27,5 +27,17 @@ namespace FraudGuard.Entities {
             OriginCountry = originCountry;
             TransactionDateTime = transactionDateTime;
         }
+
+        public bool IsInternacional(User user) {
+            return OriginCountry != user.UsualCountry;
+        }
+
+        public bool IsHighValue () {
+            return TransactionValue >= 5000;
+        }
+
+        public bool OccurredAtSuspiciousTime() {
+            return TransactionDateTime.Hour < 6;
+        }
     }
 }
