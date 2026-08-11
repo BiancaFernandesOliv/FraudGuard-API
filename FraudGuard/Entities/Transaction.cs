@@ -1,7 +1,7 @@
 ﻿using FraudGuard.Enums;
 
 namespace FraudGuard.Entities {
-    internal class Transaction {
+    public class Transaction {
 
         public Guid TransactionId { get; private set; }
         public Guid UserId { get; private set; }

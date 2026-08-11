@@ -1,5 +1,5 @@
 ﻿namespace FraudGuard.Enums {
-    enum Country {
+    public enum Country {
         Brazil,
         UnitedStates,
         Canada,

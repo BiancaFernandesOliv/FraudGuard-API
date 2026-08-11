@@ -1,7 +1,7 @@
 ﻿using FraudGuard.Enums;
 
 namespace FraudGuard.Entities {
-    internal class FraudAnalysis {
+    public class FraudAnalysis {
 
         public bool IsSuspicious { get; private set; }
         public FraudRiskLevel RiskLevel { get; private set; }

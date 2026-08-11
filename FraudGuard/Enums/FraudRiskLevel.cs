@@ -1,8 +1,8 @@
 ﻿namespace FraudGuard.Enums {
-    enum FraudRiskLevel {
+    public enum FraudRiskLevel {
 
-        Low, 
-        Medium, 
+        Low,
+        Medium,
         High
     }
 }
