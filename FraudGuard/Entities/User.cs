@@ -13,20 +13,13 @@ namespace FraudGuard.Entities {
             ValidateId(id);
             ValidateCountry(usualCountry);
 
-            Name = name;
+            Name = name.Trim();
             Id = id;
             UsualCountry = usualCountry;
         }
 
         private void ValidateName(string name) {
-            if (string.IsNullOrWhiteSpace(name) || name.Trim().Length < 3) throw new ArgumentException("Name is invalid.");
-        }
-        public void UpdateName(string newName) {
-
-            if (Name == newName) return;
-
-            ValidateName(newName);
-            Name = newName;
+            if (string.IsNullOrWhiteSpace(name) || name.Length < 3) throw new ArgumentException("Name is invalid.");
         }
 
         private void ValidateId(Guid id) {
@@ -37,6 +30,14 @@ namespace FraudGuard.Entities {
             if (!Enum.IsDefined(typeof(Country), country)) throw new ArgumentException("User country is invalid.");
         }
 
+        public void UpdateName(string newName) {
+
+            if (Name == newName) return;
+
+            ValidateName(newName);
+            Name = newName.Trim();
+        }
+
         public void UpdateCountry(Country newCountry) {
 
             if (UsualCountry == newCountry) return;
@@ -44,7 +45,6 @@ namespace FraudGuard.Entities {
             ValidateCountry(newCountry);
             UsualCountry = newCountry;
         }
-
     }
 }
 
