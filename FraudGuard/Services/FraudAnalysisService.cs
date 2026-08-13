@@ -24,8 +24,8 @@ namespace FraudGuard.Services {
 
         private string DetermineReason(User user, Transaction transaction, FraudRiskLevel riskLevel) {
 
-            if (riskLevel == FraudRiskLevel.Low) {
-                return "No suspicious behavior detected.";
+            if (riskLevel == FraudRiskLevel.High) {
+                return "High value international transaction at suspicious time.";
             }
 
             if (riskLevel == FraudRiskLevel.Medium) {
@@ -50,12 +50,11 @@ namespace FraudGuard.Services {
                 }
             }
 
-            if (riskLevel == FraudRiskLevel.High) {
-                return "High value international transaction at suspicious time.";
+            if (riskLevel == FraudRiskLevel.Low) {
+                return "No suspicious behavior detected.";
             }
 
             throw new ArgumentOutOfRangeException(nameof(riskLevel), riskLevel, "Invalid risk level.");
         }
-
     }
 }
