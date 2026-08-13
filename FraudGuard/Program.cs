@@ -25,7 +25,7 @@ Console.WriteLine(riskLevel); */
 
 FraudAnalysisService fraudAnalysisService = new FraudAnalysisService(riskAnalysisService);
 
-Transaction transaction2 = new Transaction(Guid.NewGuid(), Guid.NewGuid(), 1200, FraudGuard.Enums.Country.Brazil, DateTime.Now);
+Transaction transaction2 = new Transaction(Guid.NewGuid(), Guid.NewGuid(), 9800, FraudGuard.Enums.Country.Canada, DateTime.Now);
 
 FraudAnalysis fraudAnalysis = fraudAnalysisService.Analyze(user, transaction2);
 

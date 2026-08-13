@@ -24,13 +24,13 @@ namespace FraudGuard.Services {
                     reason = "High value international transaction at suspicious time.";
                 }
                 else {
-                    if(transaction.IsInternacional(user) && transaction.IsHighValue()) {
+                    if(transaction.IsInternational(user) && transaction.IsHighValue()) {
                         reason = "High value international transaction.";
                     } 
-                    else if(transaction.IsInternacional(user) && transaction.OccurredAtSuspiciousTime()) {
+                    else if(transaction.IsInternational(user) && transaction.OccurredAtSuspiciousTime()) {
                         reason = "International transaction at suspicious time.";
                     }
-                    else if(transaction.IsInternacional(user)) {
+                    else if(transaction.IsInternational(user)) {
                         reason = "International transaction.";
                     }
                     else if(transaction.IsHighValue() && transaction.OccurredAtSuspiciousTime()) {

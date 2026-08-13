@@ -28,7 +28,7 @@ namespace FraudGuard.Entities {
             TransactionDateTime = transactionDateTime;
         }
 
-        public bool IsInternacional(User user) {
+        public bool IsInternational(User user) {
             return OriginCountry != user.UsualCountry;
         }
 

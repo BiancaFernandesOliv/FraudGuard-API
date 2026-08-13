@@ -7,10 +7,10 @@ namespace FraudGuard.Services {
 
         public FraudRiskLevel DetermineRiskLevel(User user, Transaction transaction) {
 
-            if (transaction.IsHighValue() && transaction.IsInternacional(user) && transaction.OccurredAtSuspiciousTime()) {
+            if (transaction.IsHighValue() && transaction.IsInternational(user) && transaction.OccurredAtSuspiciousTime()) {
                 return FraudRiskLevel.High;
             }
-            else if (transaction.IsHighValue() || transaction.IsInternacional(user) || transaction.OccurredAtSuspiciousTime()) {
+            else if (transaction.IsHighValue() || transaction.IsInternational(user) || transaction.OccurredAtSuspiciousTime()) {
                 return FraudRiskLevel.Medium;
             }
             else {
