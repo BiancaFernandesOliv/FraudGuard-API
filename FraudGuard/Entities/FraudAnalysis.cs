@@ -9,43 +9,13 @@ namespace FraudGuard.Entities {
 
         public FraudAnalysis(bool isSuspicious, FraudRiskLevel riskLevel, string reason) {
 
-            ValidateRiskLevel(riskLevel);
-            ValidateReason(reason);            
+            if (!Enum.IsDefined(typeof(FraudRiskLevel), riskLevel)) throw new ArgumentException("Risk level is invalid.");
+
+            if (string.IsNullOrWhiteSpace(reason)) throw new ArgumentException("Reason is invalid.");
 
             IsSuspicious = isSuspicious;
             RiskLevel = riskLevel;
             Reason = reason;
-        }
-
-        public void MarkAsSuspicious() {
-            IsSuspicious = true;
-        }
-
-        public void MarkAsSafe() {
-            IsSuspicious = false;
-        }
-
-        private void ValidateRiskLevel(FraudRiskLevel riskLevel) {
-            if (!Enum.IsDefined(typeof(FraudRiskLevel), riskLevel)) throw new ArgumentException("Risk level is invalid.");
-        }
-
-        public void UpdateRiskLevel(FraudRiskLevel newRiskLevel) {
-
-            if (RiskLevel == newRiskLevel) return;
-
-            ValidateRiskLevel(newRiskLevel);
-            RiskLevel = newRiskLevel;
-        }
-
-        private void ValidateReason(string reason) {
-            if (string.IsNullOrWhiteSpace(reason) || reason.Trim().Length < 3) throw new ArgumentException("Reason is invalid.");
-        }
-
-        public void UpdateReason(string newReason) {
-            if (Reason == newReason) return;
-
-            ValidateReason(newReason);
-            Reason = newReason;
         }
     }
 }
